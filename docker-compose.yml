@@ -1,0 +1,136 @@
+services:
+  nats-main: 
+    image: nats:latest
+    container_name: nats-main
+    ports:
+      - 4222:4222
+      - 8222:8222
+
+  api-gateway: 
+    container_name: api-gateway
+    build: ./api-gateway
+    depends_on: 
+     - nats-main
+    ports:
+      - "8008:${PORT_GATEWAY}"
+    environment:
+      - PORT=${PORT_GATEWAY}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - WIX_SITE_ID=${WIX_SITE_ID}
+      - WIX_ACC_ID=${WIX_ACC_ID}
+      - WIX_API_KEY=${WIX_API_KEY}
+      - WIX_URL=${WIX_URL}
+    
+  obras-ms:
+    container_name: obras-ms
+    depends_on: 
+      - api-gateway
+    build: ./obras-ms
+    ports:
+      - "${PORT_OBRAS}:${PORT_OBRAS}"
+    environment:
+      - PORT=${PORT_OBRAS}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+
+  usuarios-ms:
+    container_name: usuarios-ms
+    depends_on: 
+      - api-gateway
+    build: ./usuarios-ms
+    ports:
+      - "${PORT_USUARIOS}:${PORT_USUARIOS}"
+    environment:
+      - PORT=${PORT_USUARIOS}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+
+  pedidos-ms:
+    container_name: pedidos-ms
+    depends_on: 
+      - api-gateway
+    build: ./pedidos-ms
+    ports:
+      - "${PORT_PEDIDOS}:${PORT_PEDIDOS}"
+    environment:
+      - PORT=${PORT_PEDIDOS}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+
+  auth-ms:
+    depends_on: 
+      - api-gateway
+    container_name: auth-ms
+    build: ./auth-ms
+    ports:
+      - "${PORT_AUTH}:${PORT_AUTH}"
+    environment:
+      - PORT=${PORT_AUTH}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+  
+  controles-ms:
+    container_name: controles-ms
+    depends_on: 
+      - api-gateway
+    build: ./controles-ms
+    ports:
+      - "${PORT_CONTROLES}:${PORT_CONTROLES}"
+    environment:
+      - PORT=${PORT_CONTROLES}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+  
+  inactividades-ms:
+    container_name: inactividades-ms
+    depends_on: 
+      - api-gateway
+    build: ./inactividades-ms
+    ports:
+      - "${PORT_INACTIVIDADES}:${PORT_INACTIVIDADES}"
+    environment:
+      - PORT=${PORT_INACTIVIDADES}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+
+  files-ms:
+    container_name: files-ms
+    depends_on: 
+      - api-gateway
+    build: ./files-ms
+    ports:
+      - "${PORT_FILES}:${PORT_FILES}"
+    environment:
+      - PORT=${PORT_FILES}
+      - NATS_SERVERS=${NATS_SERVERS}
+      - GOOGLE_URI=${GOOGLE_URI}
+      - SIGN=${SIGN}
+      - ROOT_FOLDER=${ROOT_FOLDER_FILES}
+      - ROOT_FOLDER=${ROOT_FOLDER}
+      - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
+      - NODE_ENV=${NODE_ENV}
+
+  notificaciones-ms:
+      container_name: notificaciones-ms
+      depends_on: 
+        - api-gateway
+      build: ./notificaciones-ms
+      ports:
+        - "${PORT_NOTIFICACIONES}:${PORT_NOTIFICACIONES}"
+      environment:
+        - PORT=${PORT_NOTIFICACIONES}
+        - NATS_SERVERS=${NATS_SERVERS}
+        - GOOGLE_URI=${GOOGLE_URI}
+        - SIGN=${SIGN}
+        - EMAIL=${EMAIL}
+        - PASSWORD_EMAIL=${PASSWORD_EMAIL}
+        - WS_API_TOKEN=${WS_API_TOKEN}
+        - WS_API_INSTANCE_ID=${WS_API_INSTANCE_ID}
+        - PUSH_NOTIFICATION_URI=${PUSH_NOTIFICATION_URI}
+        - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
