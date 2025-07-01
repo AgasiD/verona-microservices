@@ -19,3 +19,6 @@
 [submodule "files-ms"]
 	path = files-ms
 	url = https://github.com/AgasiD/verona-files-ms
+[submodule "pedidos-ms"]
+	path = pedidos-ms
+	url = https://github.com/AgasiD/verona-pedidos-ms
