@@ -1,0 +1,3 @@
+[submodule "s-ms"]
+	path = s-ms
+	url = https://github.com/AgasiD/verona-files-ms
