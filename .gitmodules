@@ -4,3 +4,18 @@
 [submodule "api-gateway"]
 	path = api-gateway
 	url = https://github.com/AgasiD/verona-api-gateway
+[submodule "obras-ms"]
+	path = obras-ms
+	url = https://github.com/AgasiD/verona-obras-ms
+[submodule "usuarios-ms"]
+	path = usuarios-ms
+	url = https://github.com/AgasiD/verona-usuarios-ms
+[submodule "auth-ms"]
+	path = auth-ms
+	url = https://github.com/AgasiD/verona-auth-ms
+[submodule "controles-ms"]
+	path = controles-ms
+	url = https://github.com/AgasiD/verona-controles-ms
+[submodule "files-ms"]
+	path = files-ms
+	url = https://github.com/AgasiD/verona-files-ms
