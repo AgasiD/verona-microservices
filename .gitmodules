@@ -22,3 +22,9 @@
 [submodule "pedidos-ms"]
 	path = pedidos-ms
 	url = https://github.com/AgasiD/verona-pedidos-ms
+[submodule "notificaciones-ms"]
+	path = notificaciones-ms
+	url = https://github.com/AgasiD/verona-notificaciones-ms
+[submodule "inactividades-ms"]
+	path = inactividades-ms
+	url = https://github.com/AgasiD/verona-inactividades-ms
