@@ -86,51 +86,51 @@ services:
       - GOOGLE_URI=${GOOGLE_URI}
       - SIGN=${SIGN}
   
-  inactividades-ms:
-    container_name: inactividades-ms
-    depends_on: 
-      - api-gateway
-    build: ./inactividades-ms
-    ports:
-      - "${PORT_INACTIVIDADES}:${PORT_INACTIVIDADES}"
-    environment:
-      - PORT=${PORT_INACTIVIDADES}
-      - NATS_SERVERS=${NATS_SERVERS}
-      - GOOGLE_URI=${GOOGLE_URI}
-      - SIGN=${SIGN}
+  # inactividades-ms:
+  #   container_name: inactividades-ms
+  #   depends_on: 
+  #     - api-gateway
+  #   build: ./inactividades-ms
+  #   ports:
+  #     - "${PORT_INACTIVIDADES}:${PORT_INACTIVIDADES}"
+  #   environment:
+  #     - PORT=${PORT_INACTIVIDADES}
+  #     - NATS_SERVERS=${NATS_SERVERS}
+  #     - GOOGLE_URI=${GOOGLE_URI}
+  #     - SIGN=${SIGN}
 
-  files-ms:
-    container_name: files-ms
-    depends_on: 
-      - api-gateway
-    build: ./files-ms
-    ports:
-      - "${PORT_FILES}:${PORT_FILES}"
-    environment:
-      - PORT=${PORT_FILES}
-      - NATS_SERVERS=${NATS_SERVERS}
-      - GOOGLE_URI=${GOOGLE_URI}
-      - SIGN=${SIGN}
-      - ROOT_FOLDER=${ROOT_FOLDER_FILES}
-      - ROOT_FOLDER=${ROOT_FOLDER}
-      - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
-      - NODE_ENV=${NODE_ENV}
+  # files-ms:
+  #   container_name: files-ms
+  #   depends_on: 
+  #     - api-gateway
+  #   build: ./files-ms
+  #   ports:
+  #     - "${PORT_FILES}:${PORT_FILES}"
+  #   environment:
+  #     - PORT=${PORT_FILES}
+  #     - NATS_SERVERS=${NATS_SERVERS}
+  #     - GOOGLE_URI=${GOOGLE_URI}
+  #     - SIGN=${SIGN}
+  #     - ROOT_FOLDER=${ROOT_FOLDER_FILES}
+  #     - ROOT_FOLDER=${ROOT_FOLDER}
+  #     - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
+  #     - NODE_ENV=${NODE_ENV}
 
-  notificaciones-ms:
-      container_name: notificaciones-ms
-      depends_on: 
-        - api-gateway
-      build: ./notificaciones-ms
-      ports:
-        - "${PORT_NOTIFICACIONES}:${PORT_NOTIFICACIONES}"
-      environment:
-        - PORT=${PORT_NOTIFICACIONES}
-        - NATS_SERVERS=${NATS_SERVERS}
-        - GOOGLE_URI=${GOOGLE_URI}
-        - SIGN=${SIGN}
-        - EMAIL=${EMAIL}
-        - PASSWORD_EMAIL=${PASSWORD_EMAIL}
-        - WS_API_TOKEN=${WS_API_TOKEN}
-        - WS_API_INSTANCE_ID=${WS_API_INSTANCE_ID}
-        - PUSH_NOTIFICATION_URI=${PUSH_NOTIFICATION_URI}
-        - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
+  # notificaciones-ms:
+  #     container_name: notificaciones-ms
+  #     depends_on: 
+  #       - api-gateway
+  #     build: ./notificaciones-ms
+  #     ports:
+  #       - "${PORT_NOTIFICACIONES}:${PORT_NOTIFICACIONES}"
+  #     environment:
+  #       - PORT=${PORT_NOTIFICACIONES}
+  #       - NATS_SERVERS=${NATS_SERVERS}
+  #       - GOOGLE_URI=${GOOGLE_URI}
+  #       - SIGN=${SIGN}
+  #       - EMAIL=${EMAIL}
+  #       - PASSWORD_EMAIL=${PASSWORD_EMAIL}
+  #       - WS_API_TOKEN=${WS_API_TOKEN}
+  #       - WS_API_INSTANCE_ID=${WS_API_INSTANCE_ID}
+  #       - PUSH_NOTIFICATION_URI=${PUSH_NOTIFICATION_URI}
+  #       - ROOT_BACKUP_FOLDER=${ROOT_BACKUP_FOLDER}
